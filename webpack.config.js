@@ -15,6 +15,18 @@ const common = {
         path: PATHS.build,
         filename: 'bundle.js',
     },
+    module:{
+        loaders: [
+            {
+                //Test expects RegExp!, not the slashes
+                test: /\.css$/,
+                loaders: ['style', 'css'],
+                //Include accepts either a path or an array of path
+                include: PATHS.app
+            }
+        ]
+    },
+
     plugins:[
         new HtmlwebpackPlugin({
             title: 'Kanban app'
