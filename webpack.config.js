@@ -15,6 +15,9 @@ const common = {
         path: PATHS.build,
         filename: 'bundle.js',
     },
+    resolve: {
+        extension: ['', 'js', 'jsx']
+    },
     module:{
         loaders: [
             {
@@ -22,6 +25,11 @@ const common = {
                 test: /\.css$/,
                 loaders: ['style', 'css'],
                 //Include accepts either a path or an array of path
+                include: PATHS.app
+            },
+            {
+                test: /\.jsx?$/,
+                loader: 'babel-loader',
                 include: PATHS.app
             }
         ]
