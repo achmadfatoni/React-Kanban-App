@@ -9,6 +9,8 @@ const PATHS = {
     build: path.join(__dirname, 'build')
 };
 
+process.env.BABEL_ENV = TARGET;
+
 const common = {
     entry: PATHS.app,
     output:{
@@ -16,7 +18,7 @@ const common = {
         filename: 'bundle.js',
     },
     resolve: {
-        extension: ['', 'js', 'jsx']
+        extensions: ['', '.js', '.jsx']
     },
     module:{
         loaders: [
@@ -37,7 +39,9 @@ const common = {
 
     plugins:[
         new HtmlwebpackPlugin({
-            title: 'Kanban app'
+            template: 'node_modules/html-webpack-template/index.html',
+            title: 'Kanban app',
+            appMountId: 'app'
         })
     ]
 }
